@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import MainContainer from '../MainContainer';
 
 describe('MainContainer', () => {
@@ -32,7 +32,8 @@ describe('MainContainer', () => {
 
   test('displays correct number of items per page', () => {
     render(<MainContainer />);
-    const listItems = screen.getAllByRole('listitem');
+    // Add a data-testid to target only content items
+    const listItems = screen.getAllByRole('listitem', { name: /^Item \d+$/i });
     expect(listItems).toHaveLength(10);
   });
 

@@ -7,9 +7,13 @@ const PageContent = ({ items, currentPage, itemsPerPage }) => {
 
   return (
     <div className="mb-4">
-      <ul className="list-group">
+      <ul className="list-group" data-testid="content-list">
         {currentItems.map((item, index) => (
-          <li key={startIndex + index} className="list-group-item">
+          <li 
+            key={startIndex + index} 
+            className="list-group-item"
+            aria-label={item}
+          >
             {item}
           </li>
         ))}
